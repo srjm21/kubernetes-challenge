@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: desafio-app
+  name: desafio-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: desafio-app
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: desafio-app
+    spec:
+      containers:
+      - image: desafio-app:1.0.0
+        name: desafio-app
+        resources: {}
+        env:
+         - name: NAME
+           valueFrom: 
+            configMapKeyRef:
+              name: var-name
+              key: NAME
+status: {}
